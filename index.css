@@ -1,0 +1,223 @@
+:root {
+  --blue:#007bff;
+  --purple:#8A2BE2;
+  --orange:#ff8c00;
+  --bg:#f4f7fb;
+}
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  font-family: Inter, system-ui, Arial, sans-serif;
+  background: var(--bg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Bigger Container */
+.container {
+  text-align: center;
+  max-width: 1200px;
+  width: 100%;
+  padding: 4rem;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 35px rgba(0,0,0,0.08);
+}
+
+.title {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  color: #444;
+  margin-bottom: 2.5rem;
+}
+
+/* Buttons */
+.button-row {
+  display: flex;
+  gap: 32px;
+  justify-content: center;
+}
+
+.btn {
+  border-radius: 16px;
+  padding: 20px 28px;
+  border: 2px solid transparent;
+  font-weight: 700;
+  cursor: pointer;
+  background: transparent;
+  transition: transform 0.2s;
+}
+
+.btn.large {
+  padding: 24px 36px;
+  font-size: 1.5rem;
+  min-width: 220px;
+}
+
+.btn.blue { border-color: var(--blue); color: var(--blue); }
+.btn.purple { border-color: var(--purple); color: var(--purple); }
+.btn.orange { border-color: var(--orange); color: var(--orange); }
+
+.btn:hover {
+  transform: translateY(-3px);
+}
+
+/* Topic backgrounds */
+.cognitive { background: #e6fbff; }
+.socio { background: #f3e6ff; }
+.physical { background: #fff3e6; }
+
+/* Cards */
+.card-row {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.card {
+  flex: 1;
+  min-width: 300px;
+  padding: 2rem;
+  border-radius: 14px;
+  border: 1px solid #eee;
+  background: white;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+  text-align: left;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.card:hover { transform: translateY(-6px); }
+.card h3 { font-size: 1.5rem; }
+
+.home-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: block;       /* ensures it stacks properly in container */
+  background: var(--blue);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 18px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  z-index: 1000;
+  transition: background 0.2s;
+}
+
+.home-btn:hover {
+  background: #0056b3;
+}
+
+.filter-btn {
+  background: var(--blue);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 18px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  z-index: 1000;
+  transition: background 0.2s;
+  display: block; /* ensures it stacks properly */
+  margin-top: 8px; /* spacing below Home button */
+}
+
+.filter-btn:hover {
+  background: #0056b3;
+}
+
+
+/* Side Tab (color changes with topic) */
+.side-tab {
+  position: fixed;
+  top: 50%;
+  left: -160px;
+  transform: translateY(-50%);
+  color: white;
+  padding: 1rem;
+  border-radius: 0 12px 12px 0;
+  width: 180px;
+  transition: left 0.3s ease;
+}
+.side-tab:hover { left: 0; }
+.side-tab.blue { background: var(--blue); }
+.side-tab.purple { background: var(--purple); }
+.side-tab.orange { background: var(--orange); }
+
+.side-tab button {
+  display: block;
+  background: transparent;
+  color: white;
+  border: none;
+  font-size: 1.1rem;
+  margin: 10px 0;
+  cursor: pointer;
+  text-align: left;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.side-tab:hover button { opacity: 1; }
+
+/* Tree expansion */
+.sub-tree {
+  margin: 1rem 0 2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.sub-btn {
+  border: none;
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-size: 1.1rem;
+  text-align: left;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.sub-btn.blue { background: var(--blue); color: white; }
+.sub-btn.purple { background: var(--purple); color: white; }
+.sub-btn.orange { background: var(--orange); color: white; }
+
+/* Equal subtopic layout */
+.tree-children {
+  display: flex;
+  gap: 16px;
+  margin-top: 1rem;
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+.tree-children.open {
+  max-height: 200px; /* enough space for 2-3 buttons */
+  opacity: 1;
+}
+
+/* Equal sizing for sub-buttons */
+.sub-btn {
+  flex: 1;
+  min-width: 200px;
+  text-align: center;
+  padding: 16px;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  transition: transform 0.2s;
+}
+.sub-btn:hover {
+  transform: translateY(-4px);
+}
